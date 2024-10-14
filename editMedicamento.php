@@ -16,9 +16,12 @@ if (isset($_POST['acao'])) {
     $sql->bindValue(':categoria', $categoria);
     $sql->bindValue(':validade', $validade);
 
-    $sql->execute();
-    echo 'Medicamento alterado com Sucesso!';
-    header("Location:index.php");
+    if ($sql->execute()) {
+        echo 'Medicamento alterado com Sucesso!';
+        header("Location:index.php");
+    } else {
+        print_r($sql->errorInfo());
+    }
 }
 ?>
 <!DOCTYPE html>
