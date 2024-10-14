@@ -2,6 +2,7 @@
 
     require 'conexao.php';
 
+    if(isset($_POST['acao'])){
     $medicamento = $_POST['medicamento'];
     $valor = $_POST['valor'];
     $estoque = $_POST['estoque'];
@@ -16,5 +17,5 @@
     $sql->bindValue(':validade', $validade);
 
     $sql->execute();
-
+}
     header("Location:index.php");
