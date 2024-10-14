@@ -1,4 +1,4 @@
-<?
+<?php
 
     require 'conexao.php';
 
@@ -22,9 +22,9 @@
             $sql->bindValue(':categoria', $categoria);
             $sql->bindValue(':validade', $validade);
 
-        $sql->execute();
-        echo 'Medicamento cadastrado com sucesso!';
-    }catch(PDOException $e){
+            $sql->execute();
+            echo 'Medicamento cadastrado com sucesso!';
+        }catch(PDOException $e){
             echo 'Erro ao cadastrar medicamento: '.$e->getMessage();
         }
     }
@@ -35,34 +35,35 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Medicamentos</title>
 </head>
 <body>
     <form method="post">
-        <small>Nome do Medicamento</small>
+        <small>Digite o nome do medicamento</small>
         <br>
         <input type="text" name="medicamento" required />
         <br>
-        <small>Valor do Medicamento</small>
+        <small>Digite o valor do medicamento</small>
         <br>
         <input type="number" name="valor" mim="0" value="0" step=".01" required />
         <br>
-        <small>Quantidade em Estoque</small>
+        <small>Digite a quantidade em estoque</small>
         <br>
         <input type="number" name="estoque" required />
         <br>
-        <small>Categoria</small>
+        <small>Qual a categoria do medicamento?</small>
         <br>
         <input type="text" name="categoria" required />
         <br>
-        <small>Data de Validade</small>
+        <small>Qual a data de validade do medicamento?</small>
         <br>
-        <input type="date" id="validade" name="validade" value="2024-12-01" min="2024-12-01" max="2035-01-01" />
+        <input type="date" id="validade" name="validade" value="2024-12-01" mim="2024-12-01" max="2035-01-01" />
         <br><br>
         <input type="submit" name="acao" value="Enviar" />
         <input type="reset" value="Apagar Informações" />
     </form>
-    <a href="index.php">Início</a> 
+    <br>
+    <a href="index.php">Início</a>
 </body>
 </html>
