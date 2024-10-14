@@ -46,6 +46,23 @@
 
     <form action="editMedicamento.php" method="post">
         <input type="hiden" name="id" id="id" value="<?=$dados['id']; ?>">
+        <label for="Medicamento">
+            Medicamento <input type="text" name="medicamento" value="<?=$dados['medicamento']; ?>">
+        </label>
+        <label for="valor">
+            Valor <input type="number" name="valor" mim="0" step=".01" value="<?=$dados['valor']; ?>">
+        </label>
+        <label for="estoque">
+            Estoque <input type="number" name="estoque" value="<?=$dados['estoque']; ?>">
+        </label>
+        <label for="categoria">
+            Categoria <input type="text" name="categoria" value="<?=$dados['categoria']; ?>">
+        </label>
+        <label for="validade">
+            Validade <input type="date" name="validade" value="<?=$dados['validade']; ?>">
+        </label>
+        <br>
+        <button type="submit">Enviar</button>
     </form>
 </body>
 </html>
