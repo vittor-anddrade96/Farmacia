@@ -62,6 +62,7 @@ if (isset($_POST['acao'])) {
         <label for="validade">
             Validade <input type="date" name="validade" value="<?= $dados['validade']; ?>">
         </label>
+        <br><br>
         <button type="submit">Excluir</button>
     </form>
     <br>
