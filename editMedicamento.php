@@ -1,3 +1,25 @@
+<?php
+
+    require 'conexao.php';
+
+    if(isset($_POST['acao'])){
+    $medicamento = $_POST['medicamento'];
+    $valor = $_POST['valor'];
+    $estoque = $_POST['estoque'];
+    $categoria = $_POST['categoria'];
+    $validade = $_POST['validade'];
+
+    $sql = $pdo->prepare("UPDATE medicamentos SET medicamento = :medicamento, valor = :valor, estoque = :estoque, categoria = :categoria, validade = :validade WHERE id = $id");
+    $sql->bindValue(':medicamento', $medicamanto);
+    $sql->bindValue(':valor', $valor);
+    $sql->bindValue(':estoque', $estoque);
+    $sql->bindValue(':categoria', $categoria);
+    $sql->bindValue(':validade', $validade);
+
+    $sql->execute();
+    header("Location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +30,6 @@
 <body>
     <h3>Editando Medicamento</h3>
     <?php
-        require 'conexao.php';
         $id = $_REQUEST['id'];
         $dados = [];
         $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
@@ -24,7 +45,7 @@
         }
     ?>
 
-    <form action="editMedicamento.php" method="post">
+    <form method="post">
         <input type="hiden" name="id" id="id" value="<?=$dados['id']; ?>">
         <label for="Medicamento">
             Medicamento <input type="text" name="medicamento" value="<?=$dados['medicamento']; ?>">
