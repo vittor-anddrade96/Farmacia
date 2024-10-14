@@ -18,7 +18,7 @@
 <body>
     <header>
         <div id="elemento-pai">
-            <a href="index.php"><img id="logo" src="imagens/logo.png" width="150"></a>
+            <a href="index.php"><img id="logo" src="imagens/farmacia.png" width="150"></a>
         </div>
         <div id="login">
             <small><a href="login.php">Login</a></small>
