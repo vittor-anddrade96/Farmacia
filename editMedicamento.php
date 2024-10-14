@@ -17,7 +17,6 @@
     $sql->bindValue(':validade', $validade);
 
     $sql->execute();
-    echo 'Medicamento alterado com Sucesso!';
     header("Location:index.php");
 }
 ?>
@@ -36,6 +35,7 @@
         $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
+        echo 'Medicamento alterado com Sucesso!';
 
         if($sql->rowCount() > 0){
             $dados = $sql->fetch(PDO::FETCH_ASSOC);
