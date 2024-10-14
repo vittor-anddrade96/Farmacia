@@ -27,8 +27,6 @@
     <nav>
         <div class="menu">
             <a href="cadMedicamento.php">Cadastro de Medicamentos</a>
-            <a href="editMedicamento.php">Editar Medicamentos</a>
-            <a href="excluirMedicamento.php">Excluir Medicamentos</a>
             <hr>
         </div>   
     </nav>
