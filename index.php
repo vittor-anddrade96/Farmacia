@@ -51,7 +51,7 @@
                 <td><?php echo $a['categoria'];?> </td>
                 <td><?php echo $a['validade'];?> </td>
                 <td>
-                    <a href="ediMedicamento.php?id=<?=$a['id']; ?>">[Editar]</a>
+                    <a href="editMedicamento.php?id=<?=$a['id']; ?>">[Editar]</a>
                     <a href="excluirMedicamento.php?id=<?=$a['Excluir']; ?>">[Excluir]</a>
                 </td>
             </tr>
