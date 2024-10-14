@@ -17,6 +17,7 @@
     $sql->bindValue(':validade', $validade);
 
     $sql->execute();
+    echo 'Medicamento alterado com Sucesso!';
     header("Location:index.php");
 }
 ?>
