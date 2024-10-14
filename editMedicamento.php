@@ -62,7 +62,7 @@
         <label for="validade">
             Validade <input type="date" name="validade" value="<?=$dados['validade']; ?>">
         </label>
-        <br>
+        <br><br>
         <button type="submit">Enviar</button>
     </form>
     <br>
