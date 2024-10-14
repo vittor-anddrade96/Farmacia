@@ -58,6 +58,15 @@
         <input type="hidden" name="id" value="<?= $dados['id']; ?>">
         <label for="medicamento">Medicamento:</label>
         <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
+        <label for="valor">Valor:</label>
+        <input type="number" name="valor" value="<?= $dados['valor']; ?>">
+        <label for="estoque">Estoque:</label>
+        <input type="number" name="estoque" value="<?= $dados['estoque']; ?>">
+        <label for="categoria">Categoria:</label>
+        <input type="text" name="categoria" value="<?= $dados['categoria']; ?>">
+        <label for="validade">Validade:</label>
+        <input type="date" name="validade" value="<?= $dados['validade']; ?>">
+        <br><br>
         <input type="submit" value="Salvar">
     </form>
 </body>
