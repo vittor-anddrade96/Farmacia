@@ -3,7 +3,6 @@
     require 'conexao.php';
     $sql = $pdo->query("SELECT * FROM medicamentos");
 
-    $lista = [];
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -11,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" />
     <title>Farmácia Vida Saudável</title>
@@ -19,7 +18,7 @@
 <body>
     <header>
         <div id="elemento-pai">
-            <a href="index.php"><img id="logo" src="imagens/farmacia.png" width="100"></a>
+            <a href="index.php"><img id="logo" src="imagens/logo.png" width="150"></a>
         </div>
         <div id="login">
             <small><a href="login.php">Login</a></small>
@@ -29,9 +28,9 @@
         <div class="menu">
             <a href="cadMedicamento.php">Cadastro de Medicamentos</a>
             <a href="editMedicamento.php">Editar Medicamentos</a>
-            <a href="excluirMedicamento.php">Ecluir Medicamentos</a>
+            <a href="excluirMedicamento.php">Excluir Medicamentos</a>
             <hr>
-        </div>
+        </div>   
     </nav>
     <h3>MEDICAMENTOS EM ESTOQUE</h3>
     <table border="1px">
@@ -45,20 +44,20 @@
         </tr>
         <?php foreach($lista as $a): ?>
             <tr>
-                <td> <?php echo $a['id'];?> </td>
-                <td> <?php echo $a['medicamento'];?> </td>
-                <td> <?php echo $a['valor'];?> </td>
-                <td> <?php echo $a['estoque'];?> </td>
-                <td> <?php echo $a['categoria'];?> </td>
-                <td> <?php echo $a['validade'];?> </td>
+                <td><?php echo $a['id'];?> </td>
+                <td><?php echo $a['medicamento'];?> </td>
+                <td><?php echo $a['valor'];?> </td>
+                <td><?php echo $a['estoque'];?> </td>
+                <td><?php echo $a['categoria'];?> </td>
+                <td><?php echo $a['validade'];?> </td>
                 <td>
-                    <a href="editMedicamento.php?id=<?=$a['id']; ?>">[Editar]</a>
+                    <a href="ediMedicamento.php?id=<?=$a['id']; ?>">[Editar]</a>
                     <a href="excluirMedicamento.php?id=<?=$a['Excluir']; ?>">[Excluir]</a>
                 </td>
             </tr>
             <?php endforeach; ?>
-    </table>
+    </table> 
     <br>
-    <a href="vender.php">INICIAR VENDA</a>
+    <a href="vender.php">Iniciar Venda</a>
 </body>
 </html>
