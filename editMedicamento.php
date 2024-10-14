@@ -33,6 +33,7 @@ if (isset($_POST['acao'])) {
 <body>
     <h3>Editando Medicamento</h3>
     <?php
+    require 'conexao.php';
     $id = $_REQUEST['id'];
     $dados = [];
     $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
