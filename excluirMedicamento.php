@@ -45,22 +45,22 @@ if (isset($_POST['acao'])) {
     }
     ?>
     <h4>ESTÁ CERTO DA EXCLUSÃO DESTE MEDICAMENTO:</h4>
-    <form action="excluirMedicamento.php" method="post">
+    <form method="post">
         <input type="hiden" name="id" id="id" value="<?= $dados['id']; ?>">
         <label for="Medicamento">
-            <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
+           Medicamento <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
         </label>
         <label for="valor">
-            <input type="number" name="valor" mim="0" step=".01" value="<?= $dados['valor']; ?>">
+            Valor <input type="number" name="valor" mim="0" step=".01" value="<?= $dados['valor']; ?>">
         </label>
         <label for="estoque">
-            <input type="number" name="estoque" value="<?= $dados['estoque']; ?>">
+            Estoque <input type="number" name="estoque" value="<?= $dados['estoque']; ?>">
         </label>
         <label for="categoria">
-            <input type="text" name="categoria" value="<?= $dados['categoria']; ?>">
+            Categoria <input type="text" name="categoria" value="<?= $dados['categoria']; ?>">
         </label>
         <label for="validade">
-            <input type="date" name="validade" value="<?= $dados['validade']; ?>">
+            Validade <input type="date" name="validade" value="<?= $dados['validade']; ?>">
         </label>
         <button type="submit">Excluir</button>
     </form>
