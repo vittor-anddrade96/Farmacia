@@ -8,6 +8,7 @@
 <body>
     <h3>Editando Medicamento</h3>
     <?php
+        require 'conexao.php';
         $id = $_REQUEST['id'];
         $dados = [];
         $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
@@ -23,7 +24,7 @@
         }
     ?>
 
-    <form action="editando.php" method="post">
+    <form action="editMedicamento.php" method="post">
         <input type="hiden" name="id" id="id" value="<?=$dados['id']; ?>">
         <label for="Medicamento">
             Medicamento <input type="text" name="medicamento" value="<?=$dados['medicamento']; ?>">
