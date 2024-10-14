@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editando Medicamentos</title>
 </head>
-
 <body>
     <h3>Editando Medicamento</h3>
     <?php
@@ -27,15 +25,11 @@
         $sql->bindValue(':validade', $validade);
         $sql->bindValue(':id', $id);
 
-        // ... (restante do código)
-
         if ($sql->execute()) {
-            echo 'Medicamento alterado com sucesso!';
+            echo 'Medicamento alterado com Sucesso!';
             header("Location:index.php");
         } else {
-            // Registra o erro em um log (opcional)
-            error_log("Erro ao atualizar medicamento: " . $sql->errorInfo()[2]);
-            echo "Ocorreu um erro ao atualizar o medicamento. Por favor, tente novamente.";
+            print_r($sql->errorInfo());
         }
     }
 
@@ -76,5 +70,4 @@
     <br>
     <a href="index.php">Início</a>
 </body>
-
 </html>
