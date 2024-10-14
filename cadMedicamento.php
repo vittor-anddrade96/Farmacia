@@ -1,43 +1,45 @@
 <?php
 
-    require 'conexao.php';
+require 'conexao.php';
 
-    if(isset($_POST['acao'])){
-        $medicamento = $_POST['medicamento'];
-        $valor = $_POST['valor'];
-        $estoque = $_POST['estoque'];
-        $categoria = $_POST['categoria'];
-        $validade = $_POST['validade'];
+if (isset($_POST['acao'])) {
+    $medicamento = $_POST['medicamento'];
+    $valor = $_POST['valor'];
+    $estoque = $_POST['estoque'];
+    $categoria = $_POST['categoria'];
+    $validade = $_POST['validade'];
 
-        if(empty($medicamento) || empty($valor) || empty($estoque) || empty($categoria) || empty($validade)){
-            echo 'Por favor, preencha todos os campos!';
-            exit;
-        }
-
-        try{
-            $sql = $pdo->prepare("INSERT INTO medicamentos (medicamento,valor,estoque,categoria,validade) VALUES (:medicamento, :valor, :estoque, :categoria, :validade)");
-            $sql->bindValue(':medicamento', $medicamento);
-            $sql->bindValue(':valor', $valor);
-            $sql->bindValue(':estoque', $estoque);
-            $sql->bindValue(':categoria', $categoria);
-            $sql->bindValue(':validade', $validade);
-
-            $sql->execute();
-            echo 'Medicamento cadastrado com sucesso!';
-        }catch(PDOException $e){
-            echo 'Erro ao cadastrar medicamento: '.$e->getMessage();
-        }
+    if (empty($medicamento) || empty($valor) || empty($estoque) || empty($categoria) || empty($validade)) {
+        echo 'Por favor, preencha todos os campos!';
+        exit;
     }
+
+    try {
+        $sql = $pdo->prepare("INSERT INTO medicamentos (medicamento,valor,estoque,categoria,validade) VALUES (:medicamento, :valor, :estoque, :categoria, :validade)");
+        $sql->bindValue(':medicamento', $medicamento);
+        $sql->bindValue(':valor', $valor);
+        $sql->bindValue(':estoque', $estoque);
+        $sql->bindValue(':categoria', $categoria);
+        $sql->bindValue(':validade', $validade);
+
+        $sql->execute();
+        echo 'Medicamento cadastrado com sucesso!';
+    } catch (PDOException $e) {
+        echo 'Erro ao cadastrar medicamento: ' . $e->getMessage();
+    }
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Medicamentos</title>
 </head>
+
 <body>
     <form method="post">
         <small>Digite o nome do medicamento</small>
@@ -66,4 +68,5 @@
     <br>
     <a href="index.php">Início</a>
 </body>
+
 </html>
