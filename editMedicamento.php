@@ -64,5 +64,7 @@
         <br>
         <button type="submit">Enviar</button>
     </form>
+    <br>
+    <a href="index.php">Início</a>
 </body>
 </html>
