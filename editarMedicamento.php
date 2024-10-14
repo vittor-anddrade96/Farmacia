@@ -33,13 +33,6 @@
     <?php 
         $id = $_REQUEST['id'];
         $dados = [];
-
-        if($sql->rowCount() > 0){
-            $dados = $sql->fetch(PDO::FETCH_ASSOC);
-        }else{
-            header("location:index.php");
-            exit;
-        }
     ?>
 
 <form method="post">
