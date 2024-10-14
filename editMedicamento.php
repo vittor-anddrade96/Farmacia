@@ -1,76 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editando Medicamentos</title>
 </head>
-
 <body>
     <h3>Editando Medicamento</h3>
+
     <?php
     require 'conexao.php';
 
-    if (isset($_POST['acao'])) {
-        $medicamento = $_POST['medicamento'];
-        $valor = $_POST['valor'];
-        $estoque = $_POST['estoque'];
-        $categoria = $_POST['categoria'];
-        $validade = $_POST['validade'];
-    
-        $sql = $pdo->prepare("UPDATE medicamentos SET medicamento = :medicamento, valor = :valor, estoque = :estoque, categoria = :categoria, validade = :validade WHERE id = :id");
-        $sql->bindValue(':medicamento', $medicamento);
-        $sql->bindValue(':valor', $valor);
-        $sql->bindValue(':estoque', $estoque);
-        $sql->bindValue(':categoria', $categoria);
-        $sql->bindValue(':validade', $validade);
-        $sql->bindValue(':id', $id);
-        
-        if ($sql->execute()) {
-            echo 'Medicamento alterado com Sucesso!';
-            header("Location:index.php");
+    // Verifica se o formulário foi enviado
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Validação dos dados
+        if (empty($_POST['medicamento']) || empty($_POST['valor']) || empty($_POST['estoque']) || empty($_POST['categoria']) || empty($_POST['validade'])) {
+            echo "Por favor, preencha todos os campos.";
         } else {
-            print_r($sql->errorInfo());
+            // Sanitiza os dados para evitar injeção de código
+            $medicamento = htmlspecialchars($_POST['medicamento'], ENT_QUOTES);
+            $valor = floatval($_POST['valor']);
+            $estoque = intval($_POST['estoque']);
+            $categoria = htmlspecialchars($_POST['categoria'], ENT_QUOTES);
+            $validade = $_POST['validade']; // Assumindo que validade é uma data
+
+            // Prepara e executa a consulta SQL
+            $sql = $pdo->prepare("UPDATE medicamentos SET medicamento = :medicamento, valor = :valor, estoque = :estoque, categoria = :categoria, validade = :validade WHERE id = :id");
+            $sql->bindValue(':medicamento', $medicamento);
+            $sql->bindValue(':valor', $valor);
+            $sql->bindValue(':estoque', $estoque);
+            $sql->bindValue(':categoria', $categoria);
+            $sql->bindValue(':validade', $validade);
+            $sql->bindValue(':id', $_POST['id']);
+
+            if ($sql->execute()) {
+                // Redireciona para a página de sucesso
+                header("Location: sucesso.php");
+            } else {
+                // Registra o erro em um log (opcional)
+                error_log("Erro ao atualizar medicamento: " . $sql->errorInfo()[2]);
+                echo "Ocorreu um erro ao atualizar o medicamento. Por favor, tente novamente.";
+            }
         }
     }
-    
-    $id = $_REQUEST['id'];
-    $dados = [];
+
+    // Obtém os dados do medicamento a ser editado
+    $id = $_GET['id'];
     $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
     $sql->bindValue(':id', $id);
     $sql->execute();
+    $dados = $sql->fetch(PDO::FETCH_ASSOC);
 
-    if ($sql->rowCount() > 0) {
-        $dados = $sql->fetch(PDO::FETCH_ASSOC);
-    } else {
-        header("location:index.php");
-        exit;
-    }
+    // Exibe o formulário com os dados pré-preenchidos
     ?>
 
     <form method="post">
-        <input type="hidden" name="id" id="id" value="<?= $dados['id']; ?>">
-        <label for="Medicamento">
-            Medicamento <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
-        </label>
-        <label for="valor">
-            Valor <input type="number" name="valor" mim="0" step=".01" value="<?= $dados['valor']; ?>">
-        </label>
-        <label for="estoque">
-            Estoque <input type="number" name="estoque" value="<?= $dados['estoque']; ?>">
-        </label>
-        <label for="categoria">
-            Categoria <input type="text" name="categoria" value="<?= $dados['categoria']; ?>">
-        </label>
-        <label for="validade">
-            Validade <input type="date" name="validade" value="<?= $dados['validade']; ?>">
-        </label>
-        <br><br>
-        <input type="submit" name="acao" value="Enviar" />
+        <input type="hidden" name="id" value="<?= $dados['id']; ?>">
+        <label for="medicamento">Medicamento:</label>
+        <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
+        <input type="submit" value="Salvar">
     </form>
-    <br>
-    <a href="index.php">Início</a>
 </body>
-
 </html>
