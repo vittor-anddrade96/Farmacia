@@ -1,10 +1,10 @@
 <?php
 
-    $pdo=new PDO('mysql:host=localhost;farmaciavidasaudavel','root','');
+    $pdo=new PDO('mysql:host=localhost;farmacia','root','');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     define('HOST', 'localhost');
-    define('DB', 'farmaciavidasaudavel');
+    define('DB', 'farmacia');
     define('USER', 'root');
     define('PASS', '');
 
