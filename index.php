@@ -50,7 +50,7 @@
                 <td><?php echo $a['validade'];?> </td>
                 <td>
                     <a href="editMedicamento.php?id=<?=$a['id']; ?>">[Editar]</a>
-                    <a href="excluirMedicamento.php?id=<?=$a['Excluir']; ?>">[Excluir]</a>
+                    <a href="excluirMedicamento.php?id=<?=$a['id']; ?>">[Excluir]</a>
                 </td>
             </tr>
             <?php endforeach; ?>
