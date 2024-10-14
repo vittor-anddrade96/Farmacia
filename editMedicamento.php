@@ -9,11 +9,9 @@ if (isset($_POST['acao'])) {
     $categoria = $_POST['categoria'];
     $validade = $_POST['validade'];
 
-    $sql = $pdo->prepare("UPDATE medicamentos SET medicamento = :medicamento, valor = :valor, estoque = :estoque, categoria = :categoria, validade = :validade WHERE id = $id");
-    $sql->bindValue(':medicamento', $medicamanto);
+    $sql = $pdo->prepare("UPDATE medicamentos SET valor = :valor, estoque = :estoque, validade = :validade WHERE id = $id");
     $sql->bindValue(':valor', $valor);
     $sql->bindValue(':estoque', $estoque);
-    $sql->bindValue(':categoria', $categoria);
     $sql->bindValue(':validade', $validade);
 
     $sql->execute();
@@ -33,7 +31,6 @@ if (isset($_POST['acao'])) {
 <body>
     <h3>Editando Medicamento</h3>
     <?php
-    require 'conexao.php';
     $id = $_REQUEST['id'];
     $dados = [];
     $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
