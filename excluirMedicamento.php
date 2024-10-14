@@ -60,6 +60,7 @@
         <label for="validade">
             <input type="date" name="validade" value="<?=$dados['validade']; ?>">
         </label>
+        <button type="submit">Excluir</button>
     </form>
     <br>
     <a href="index.php">Início</a>
