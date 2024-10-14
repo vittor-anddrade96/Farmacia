@@ -51,7 +51,7 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <td><?php echo $a['categoria']; ?> </td>
                 <td><?php echo $a['validade']; ?> </td>
                 <td>
-                    <a href="editarMedicamento.php?id=<?= $a['id']; ?>">[Editar]</a>
+                    <a href="editMedicamento.php?id=<?= $a['id']; ?>">[Editar]</a>
                     <a href="excluirMedicamento.php?id=<?= $a['id']; ?>">[Excluir]</a>
                 </td>
             </tr>
