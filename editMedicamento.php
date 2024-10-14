@@ -52,7 +52,7 @@ if (isset($_POST['acao'])) {
     ?>
 
     <form method="post">
-        <input type="hiden" name="id" id="id" value="<?= $dados['id']; ?>">
+        <input type="hidden" name="id" id="id" value="<?= $dados['id']; ?>">
         <label for="Medicamento">
             Medicamento <input type="text" name="medicamento" value="<?= $dados['medicamento']; ?>">
         </label>
