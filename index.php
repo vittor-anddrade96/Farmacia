@@ -13,7 +13,6 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" />
     <title>Farmácia Vida Saudável</title>
 </head>
 
@@ -23,8 +22,55 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
             <a href="index.php"><img id="logo" src="imagens/farmacia.png" width="150"></a>
         </div>
         <div id="login">
-            <small><a href="login.php">Login</a></small>
+            <small><a href="Login.php">Login</a></small>
         </div>
+        <style>
+            body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+
+            .login {
+                text-align: right;
+                margin: 5px auto;
+                padding-right: 10px;
+            }
+
+            .login>small a {
+                position: right;
+                text-decoration: none;
+                color: crimson;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                border-left: 1px solid crimson;
+                padding-left: 5px;
+            }
+
+            .menu {
+                width: 900px;
+                text-align: center;
+                margin: 5px auto;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .menu>a {
+                text-decoration: none;
+                color: crimson;
+                font-size: 20px;
+                margin: 0 20px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-weight: bold;
+            }
+
+            h3 {
+                color: crimson;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            tr {
+                color: crimson;
+            }
+        </style>
     </header>
     <nav>
         <div class="menu">
