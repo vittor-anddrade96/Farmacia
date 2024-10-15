@@ -40,7 +40,7 @@ if (isset($_POST['acao'])) {
     if ($sql->rowCount() > 0) {
         $dados = $sql->fetch(PDO::FETCH_ASSOC);
     } else {
-        header('Location:index.php');
+        header('Location:home.php');
         exit;
     }
     ?>
@@ -66,7 +66,7 @@ if (isset($_POST['acao'])) {
         <input type="submit" name="acao" value="Excluir" />
     </form>
     <br>
-    <a href="index.php">Início</a>
+    <a href="home.php">Início</a>
 </body>
 
 </html>

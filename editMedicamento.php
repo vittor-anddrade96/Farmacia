@@ -27,7 +27,7 @@
 
         if ($sql->execute()) {
             echo 'Medicamento alterado com Sucesso!';
-            header("Location:index.php");
+            header("Location:home.php");
         } else {
             print_r($sql->errorInfo());
         }
@@ -42,7 +42,7 @@
     if ($sql->rowCount() > 0) {
         $dados = $sql->fetch(PDO::FETCH_ASSOC);
     } else {
-        header("location:index.php");
+        header("location:home.php");
         exit;
     }
     ?>
@@ -68,6 +68,6 @@
         <input type="submit" name="acao" value="Enviar" />
     </form>
     <br>
-    <a href="index.php">Início</a>
+    <a href="home.php">Início</a>
 </body>
 </html>

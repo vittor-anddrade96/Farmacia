@@ -12,7 +12,7 @@ if (isset($_POST['acao'])) {
 
     $result = $pdo->query($sql);
     if ($result->rowCount() > 0) {
-        header("Location:index.php");
+        header("Location:home.php");
     } else {
         echo 'Email ou Senha inválidos';
     }

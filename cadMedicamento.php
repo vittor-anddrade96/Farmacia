@@ -66,7 +66,7 @@ if (isset($_POST['acao'])) {
         <input type="reset" value="Apagar Informações" />
     </form>
     <br>
-    <a href="index.php">Início</a>
+    <a href="home.php">Início</a>
 </body>
 
 </html>
