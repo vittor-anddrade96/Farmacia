@@ -1,49 +1,68 @@
 <?php
 
-    require 'conexao.php';    
+require 'conexao.php';
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
+if (isset($_POST['acao'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-        $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = :email");
-        $sql->bindParam(':email', $email);
-        $sql->execute();
+    $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = ':email' AND senha = ':senha'");
+    $sql->bindValue(":email", $email);
+    $sql->bindValue(":senha", $senha);
 
-        $user = $sql->fetch(PDO::FETCH_ASSOC);
-        if($user && password_verify($senha, $user['senha'])){
-            session_start();
-            $_SESSION['usuario_id'] = $user['id'];
-            $_SESSION['nome'] = $user['nome'];
-            header("Location: home.php");
-            exit;
-        }else{
-            echo 'Email ou Senha inválidos.';
-        }
+    $result = $pdo->query($sql);
+    if ($result->rowCount() > 0) {
+        header("Location:home.php");
+    } else {
+        echo 'Email ou Senha inválidos';
     }
-    ?>
-    
-    <!DOCTYPE html>
-<html lang="pt-br">
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-image: linear-gradient(45deg, crimson, purple);
+        }
 
-  <title>Login</title>
+        div {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 80px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        input {
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+    </style>
 </head>
+
 <body>
-  <h2>Login</h2>
-  <form method="post" action=""> 
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" required> 
-
-    <br>
-    <button type="submit">Entrar</button>
-  </form> 
-
+    <div>
+        <h1>Login</h1>
+        <h4>Farmácia Vida Saudável</h4>
+        <input type="text" placeholder="Email" required />
+        <br><br>
+        <input type="password" placeholder="Senha" required />
+        <br><br>
+        <input type="submit" name="acao" value="Entrar" />
+    </div>
 </body>
+
 </html>
