@@ -75,7 +75,7 @@
 
             <div class="text-center">
                 <button type="submit" name="acao" class="btn btn-danger">Excluir</button>
-                <a href="home.php" class="btn btn-secondary">Cancelar</a>
+                <a href="home_admin.php" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
