@@ -1,4 +1,5 @@
 <?php
+session_start(); // Inicia a sessão
 
 require 'conexao.php';
 
@@ -6,23 +7,33 @@ if (isset($_POST['acao'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    
+    // Consulta que também busca o campo 'role' para saber se é admin ou atendente
     $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = :email AND senha = :senha");
     $sql->bindValue(":email", $email);
     $sql->bindValue(":senha", $senha);
     
-    
     $sql->execute();
     
-    
+    // Verifica se encontrou algum usuário
     if ($sql->rowCount() > 0) {
-        header("Location: home.php");
+        $user = $sql->fetch(PDO::FETCH_ASSOC);
+
+        // Armazena as informações de login na sessão
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_role'] = $user['role']; // Aqui é onde armazenamos o papel (admin ou atendente)
+
+        // Verifica se o usuário é administrador ou atendente
+        if ($user['role'] === 'admin') {
+            header("Location: home_admin.php"); // Página para administradores
+        } else {
+            header("Location: home_atendente.php"); // Página para atendentes
+        }
         exit(); 
     } else {
         echo 'Email ou Senha inválidos';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
