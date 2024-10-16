@@ -18,7 +18,7 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <header class="bg-light py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.php"><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
+            <a href=""><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
             <div>
                 <a href="Login.php" class="btn btn-outline-danger btn-sm">Login</a>
             </div>
