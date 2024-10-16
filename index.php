@@ -6,18 +6,18 @@ if (isset($_POST['acao'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Prepare a query
+    
     $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = :email AND senha = :senha");
     $sql->bindValue(":email", $email);
     $sql->bindValue(":senha", $senha);
     
-    // Execute the query
+    
     $sql->execute();
     
-    // Check if user exists
+    
     if ($sql->rowCount() > 0) {
         header("Location: home.php");
-        exit(); // Adicione exit após o header para evitar execução adicional
+        exit(); 
     } else {
         echo 'Email ou Senha inválidos';
     }
