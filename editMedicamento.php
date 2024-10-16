@@ -10,11 +10,11 @@
     <?php
     require 'conexao.php';
 
-    // Captura o ID antes de processar o formulário
+    
     if (isset($_REQUEST['id'])) {
         $id = $_REQUEST['id'];
 
-        // Seleciona o medicamento para edição
+        
         $sql = $pdo->prepare("SELECT * FROM medicamentos WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
@@ -28,8 +28,8 @@
     }
 
     if (isset($_POST['acao'])) {
-        // Capture o ID do formulário
-        $id = $_POST['id']; // Aqui você captura o ID
+        
+        $id = $_POST['id']; 
 
         $medicamento = $_POST['medicamento'];
         $valor = $_POST['valor'];
@@ -48,7 +48,7 @@
         if ($sql->execute()) {
             echo 'Medicamento alterado com Sucesso!';
             header("Location:home.php");
-            exit; // É importante adicionar exit após header
+            exit; 
         } else {
             print_r($sql->errorInfo());
         }
