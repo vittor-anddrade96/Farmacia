@@ -49,7 +49,7 @@
 
             if ($sql->execute()) {
                 echo '<div class="alert alert-success">Medicamento alterado com sucesso!</div>';
-                header("Location:home.php");
+                header("Location:home_admin.php");
                 exit;
             } else {
                 echo '<div class="alert alert-danger">Erro ao atualizar medicamento!</div>';
