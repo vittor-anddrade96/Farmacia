@@ -25,7 +25,7 @@ $isAdmin = isset($_SESSION['user_cargo']) && $_SESSION['user_cargo'] === 'Admini
         <div class="container d-flex justify-content-between align-items-center">
             <a href="index.php"><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
             <div>
-                <a href="Login.php" class="btn btn-outline-danger btn-sm">Login</a>
+                <a href="index.php" class="btn btn-outline-danger btn-sm">Sair</a>
             </div>
         </div>
     </header>
