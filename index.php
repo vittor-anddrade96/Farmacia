@@ -6,13 +6,18 @@ if (isset($_POST['acao'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = ':email' AND senha = ':senha'");
+    // Prepare a query
+    $sql = $pdo->prepare("SELECT * FROM funcionarios WHERE email = :email AND senha = :senha");
     $sql->bindValue(":email", $email);
     $sql->bindValue(":senha", $senha);
-
-    $result = $pdo->query($sql);
-    if ($result->rowCount() > 0) {
-        header("Location:home.php");
+    
+    // Execute the query
+    $sql->execute();
+    
+    // Check if user exists
+    if ($sql->rowCount() > 0) {
+        header("Location: home.php");
+        exit(); // Adicione exit após o header para evitar execução adicional
     } else {
         echo 'Email ou Senha inválidos';
     }
@@ -57,11 +62,13 @@ if (isset($_POST['acao'])) {
     <div>
         <h1>Login</h1>
         <h4>Farmácia Vida Saudável</h4>
-        <input type="text" placeholder="Email" required />
-        <br><br>
-        <input type="password" placeholder="Senha" required />
-        <br><br>
-        <input type="submit" name="acao" value="Entrar" />
+        <form method="post">
+            <input type="text" name="email" placeholder="Email" required />
+            <br><br>
+            <input type="password" name="senha" placeholder="Senha" required />
+            <br><br>
+            <input type="submit" name="acao" value="Entrar" />
+        </form>
     </div>
 </body>
 
