@@ -75,9 +75,6 @@ $isAdmin = isset($_SESSION['user_cargo']) && $_SESSION['user_cargo'] === 'Admini
             </table>
         </div>
 
-        <div class="text-center mt-4">
-            <a href="vender.php" class="btn btn-success">Iniciar Venda</a>
-        </div>
     </main>
 
     <!-- Bootstrap JS -->
