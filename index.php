@@ -24,7 +24,7 @@ if (isset($_POST['acao'])) {
         $_SESSION['user_cargo'] = $user['cargo'];
 
         
-        if ($user['role'] === 'Administrador') {
+        if ($user['cargo'] === 'Administrador') {
             header("Location: home_admin.php"); 
         } else {
             header("Location: home_atendente.php");

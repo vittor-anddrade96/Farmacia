@@ -6,7 +6,7 @@ $sql = $pdo->query("SELECT * FROM medicamentos");
 $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 
-$isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Administrador';
+$isAdmin = isset($_SESSION['user_cargo']) && $_SESSION['user_cargo'] === 'Administrador';
 ?>
 
 <!DOCTYPE html>
