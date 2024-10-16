@@ -5,7 +5,7 @@ require 'conexao.php';
 $sql = $pdo->query("SELECT * FROM medicamentos");
 $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-$isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+$isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Administrador';
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,9 @@ $isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
 <body>
     <header class="bg-light py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.php"><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
+            <a href=""><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
             <div>
-                <a href="Login.php" class="btn btn-outline-danger btn-sm">Login</a>
+                <a href="index.php" class="btn btn-outline-danger btn-sm">Sair</a>
             </div>
         </div>
     </header>

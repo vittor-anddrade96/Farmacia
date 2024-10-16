@@ -1,7 +1,12 @@
 <?php
+session_start(); 
+
 require 'conexao.php';
 $sql = $pdo->query("SELECT * FROM medicamentos");
 $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
+$isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Administrador';
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +23,9 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <header class="bg-light py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href=""><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
+            <a href="index.php"><img src="imagens/farmacia.png" alt="Logo Farmácia" width="150"></a>
             <div>
-                <a href="Login.php" class="btn btn-outline-danger btn-sm">Sair</a>
+                <a href="Login.php" class="btn btn-outline-danger btn-sm">Login</a>
             </div>
         </div>
     </header>
@@ -57,8 +62,12 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= $a['categoria']; ?></td>
                             <td><?= $a['validade']; ?></td>
                             <td>
-                                <a href="editMedicamento.php?id=<?= $a['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="excluirMedicamento.php?id=<?= $a['id']; ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                <?php if ($isAdmin): ?>
+                                    <a href="editMedicamento.php?id=<?= $a['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="excluirMedicamento.php?id=<?= $a['id']; ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                <?php else: ?>
+                                    <span class="text-muted">Sem permissões</span>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -71,7 +80,7 @@ $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </main>
 
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
