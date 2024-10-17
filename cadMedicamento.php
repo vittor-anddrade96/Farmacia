@@ -100,7 +100,7 @@ if (isset($_POST['acao'])) {
             <button type="submit" name="acao" class="btn btn-primary">Enviar</button>
             <button type="reset" class="btn btn-secondary">Apagar Informações</button>
         </form>
-        <a href="home.php" class="btn btn-link">Início</a>
+        <a href="home_admin.php" class="btn btn-link">Início</a>
     </div>
 
     <!-- Bootstrap JS (Opcional) -->
