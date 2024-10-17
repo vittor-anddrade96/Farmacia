@@ -29,12 +29,6 @@ $isAdmin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Administ
         </div>
     </header>
 
-    <nav class="bg-danger py-2">
-        <div class="container text-center">
-            <a href="cadMedicamento.php" class="text-white text-decoration-none fw-bold">Cadastro de Medicamentos</a>
-        </div>
-    </nav>
-
     <main class="container my-5">
         <h3 class="text-danger text-center mb-4">MEDICAMENTOS EM ESTOQUE</h3>
 
